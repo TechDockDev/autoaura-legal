@@ -101,10 +101,23 @@ footer a { color: var(--text-muted); }
   .layout { grid-template-columns: minmax(0, 1fr); }
   .toc { position: static; }
 }
+@media (max-width: 640px) {
+  /* Logo on top, the page buttons in one row below it (scrolls sideways if it must). */
+  .topbar-in { flex-wrap: wrap; padding-bottom: 10px; }
+  .toplinks { width: 100%; flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; }
+  .toplinks::-webkit-scrollbar { display: none; }
+  .pill { flex: none; }
+}
 @media (max-width: 480px) {
   .brandmark .sub { display: none; }
-  .pill { height: 32px; padding: 0 11px; font-size: 12px; }
+  .toplinks { gap: 4px; }
+  .pill { height: 32px; padding: 0 8px; font-size: 11.5px; }
   .wrap { padding-top: 24px; }
+}
+@media (max-width: 400px) {
+  /* Small phones: let the page buttons wrap so all of them stay visible. */
+  .topbar-in, .wrap, footer .in { padding-left: 16px; padding-right: 16px; }
+  .toplinks { flex-wrap: wrap; overflow: visible; }
 }
 @media print {
   .topbar, .toc, footer { display: none; }
